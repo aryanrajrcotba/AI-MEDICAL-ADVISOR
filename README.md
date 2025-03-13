@@ -1,4 +1,4 @@
-# AI-Powered-Medical-Advisor-ML-Model
+# AI MEDICAL ADVISOR
 
 ## Overview
 AI-Powered Medical Advisor is a machine learning-based web application designed to assist users in identifying potential diseases based on their symptoms. It provides medical recommendations using a trained AI model.
