@@ -12,18 +12,44 @@
     <div class="overlay"></div>
     <div class="background-image"></div>
     <div class="container animate-container">
-        <h1 class="animate-heading">🤖 AI-Powered Medical Advisor</h1>
-        <form method="POST" class="form-box animate-form">
+        <h1 class="animate-heading">🤖 AI Medical Advisor</h1>
+        <form method="POST" class="form-box animate-form" onsubmit="startThinking(event)">
             <label for="symptoms">Enter Symptoms (comma-separated):</label> <br>
            <br> <input type="text" id="symptoms" name="symptoms" placeholder="e.g., fever, cough" required> <br>
             <button type="submit" class="animate-button">🔍 Predict</button>
         </form>
-        {% if prediction %}
-            <div class="result-box animate-result">
-                <h2>🧠 Predicted Disease: {{ prediction }}</h2>
-                <p><strong>Suggested Solution:</strong> {{ solution }}</p>
-            </div>
-        {% endif %}
+
+        <!-- Thinking Animation -->
+        <div id="thinking-box" class="thinking-box hidden">
+            <p>🤖 Analyzing symptoms...</p>
+            <div class="dots"></div>
+        </div>
+
+        <!-- Prediction Result -->
+        <div id="result-container" class="result-box animate-result hidden">
+            <h2>🧠 Predicted Disease: <span id="predicted-disease"></span></h2>
+            <p><strong>Suggested Solution:</strong> <span id="predicted-solution"></span></p>
+        </div>
     </div>
+
+    <script>
+        function startThinking(event) {
+            event.preventDefault();
+
+            // Show thinking animation
+            document.getElementById("thinking-box").classList.remove("hidden");
+            document.getElementById("result-container").classList.add("hidden");
+
+            // Simulate AI processing delay
+            setTimeout(() => {
+                document.getElementById("thinking-box").classList.add("hidden");
+                document.getElementById("result-container").classList.remove("hidden");
+
+                // Simulated result (Replace with server response)
+                document.getElementById("predicted-disease").innerText = "Flu";
+                document.getElementById("predicted-solution").innerText = "Rest, drink warm fluids, and take prescribed medications.";
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
